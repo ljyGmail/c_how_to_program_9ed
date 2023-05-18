@@ -1,0 +1,7 @@
+1. Go to project folder
+2. Run docker container
+Windows: docker run --rm -it -v "%CD%":/usr/src gcc:latest
+MacOS: docker run --rm -it -v "$(pwd)":/usr/src gcc:latest
+3. Run C program
+gcc -std=c18 HelloWorld.c -o out/helloworld
+./out/helloworld
