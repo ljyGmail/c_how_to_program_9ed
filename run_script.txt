@@ -3,5 +3,6 @@
 Windows: docker run --rm -it -v "%CD%":/usr/src gcc:latest
 MacOS: docker run --rm -it -v "$(pwd)":/usr/src gcc:latest
 3. Run C program
+cd /usr/src
 gcc -std=c18 HelloWorld.c -o out/helloworld
 ./out/helloworld
