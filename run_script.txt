@@ -1,8 +1,25 @@
 1. Go to project folder
 2. Run docker container
 Windows: docker run --rm -it -v "%CD%":/usr/src gcc:latest
+* The terminal in Windows must be cmd, not PowerShell.
 MacOS: docker run --rm -it -v "$(pwd)":/usr/src gcc:latest
 3. Run C program
 cd /usr/src
 gcc -std=c18 HelloWorld.c -o out/helloworld
 ./out/helloworld
+
+# 소스크드를 한번에 컴파일
+ls -F 
+| grep -v '/' 
+| sed 's/*$//' 
+| awk '{ print "gcc -std=c18", $0, "-o out/"$0 }' 
+| sed 's/.c$//' 
+| bash
+
+# | awk '{ print "gcc -std=c18", $0, "-o out/"substr($0, 4) }' # 앞에 숫자(01_, 02_...)가 필요 없을 때 사용
+
+# 또 다른 방식 (find)
+find . -maxdepth 1 -type f -print 
+| awk '{print "gcc -std=c18", $0, "-o out/" substr($0, 3) }' 
+| sed 's/.c$//' 
+| bash
