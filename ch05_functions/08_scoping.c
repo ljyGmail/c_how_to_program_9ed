@@ -26,6 +26,8 @@ int main(void)
     useLocal();       // useLocal reinitializes automatic local x
     useStaticLocal(); // static local x retains its prior value
     useGlobal();      // global x also retains its value
+
+    printf("\nlocal x in main is %d\n", x);
 }
 
 // useLocal reinitializes local variable x during each call
